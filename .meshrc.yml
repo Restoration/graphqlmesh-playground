@@ -1,33 +1,12 @@
-# .meshrc.yml（修正版）
 sources:
-  - name: petstore
+  - name: PetStore
     handler:
       openapi:
-        source: https://petstore3.swagger.io/api/v3/openapi.json
-        baseUrl: https://petstore3.swagger.io/api/v3   # ← endpoint ではなく baseUrl
-        # operationHeaders:
-        #   Authorization: Bearer {context.headers.authorization}
-
-  - name: countries
+        # OpenAPI の取得元（ローカルでもURLでもOK）
+        source: ./openapi.json
+        # 実呼び出しのベースURL（v0ドキュメントで正式サポート）
+        endpoint: https://petstore3.swagger.io/api/v3
+  - name: Space
     handler:
       graphql:
-        endpoint: https://countries.trevorblades.com/graphql
-
-transforms:
-  - rename:
-      mode: wrap
-      renames:
-        - from:
-            type: Query
-            field: countries
-          to:
-            type: Query
-            field: allCountries
-
-plugins:
-  - responseCache:
-      ttl: 30000
-      # 必要なら座標ごとにTTL調整:
-      # ttlPerCoordinate:
-      #   - coordinate: Query.allCountries
-      #     ttl: 5000
+        endpoint: https://countries.trevorblades.com/
