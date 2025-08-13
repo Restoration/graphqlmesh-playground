@@ -6,7 +6,7 @@ sources:
         source: ./openapi.json
         # 実呼び出しのベースURL（v0ドキュメントで正式サポート）
         endpoint: https://petstore3.swagger.io/api/v3
-  - name: Space
+  - name: Countries
     handler:
       graphql:
         endpoint: https://countries.trevorblades.com/
