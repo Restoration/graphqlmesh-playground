@@ -4,24 +4,31 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "mesh build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@graphql-mesh/cli": "^0.100.8",
+    "@graphql-mesh/graphql": "^0.104.7",
+    "@graphql-mesh/openapi": "^0.109.14",
+    "@graphql-mesh/plugin-response-cache": "^0.104.8",
+    "@graphql-mesh/transform-rename": "^0.105.8",
+    "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
