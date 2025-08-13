@@ -6,6 +6,5 @@ const sdk = getSdk(client)
 
 export async function demo() {
   const a = await sdk.AllCountries()
-  const b = await sdk.ListPets({ limit: 5 })
-  console.log(a.countries?.length, b.listPets?.length)
+  console.log(a.countries?.length)
 }
