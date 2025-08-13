@@ -6,12 +6,11 @@ GraphQL Meshの動作検証用リポジトリ
 ```
 $ npm run prebuild
 $ npm run codegen
+$ npm run dev
 ```
 
-## CLI
+## プレイグラウンド
 - npm run mesh
-- npm run dev
-
 
 meshコマンドで`http://localhost:4000/graphql`にプレイグラウンド立ち上げ
 
