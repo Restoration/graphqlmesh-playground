@@ -2,6 +2,12 @@
 ## 概要
 GraphQL Meshの動作検証用リポジトリ
 
+## 立ち上げ
+```
+$ npm run prebuild
+$ npm run codegen
+```
+
 ## CLI
 - npm run mesh
 - npm run dev

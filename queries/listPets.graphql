@@ -1,0 +1,7 @@
+query ListPets($limit: Int) {
+  listPets(limit: $limit) {
+    id
+    name
+    tag
+  }
+}

@@ -1,0 +1,9 @@
+overwrite: true
+schema: "./.mesh/schema.graphql"   # mesh build 後に生成されるスキーマ
+documents: "./queries/**/*.graphql" # 任意: .graphql クエリファイルの場所
+generates:
+  ./src/graphql/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
