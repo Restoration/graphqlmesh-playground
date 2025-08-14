@@ -1,5 +1,5 @@
-import { GraphQLClient, RequestOptions } from 'graphql-request';
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -7,7 +7,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
-type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -421,16 +421,34 @@ export const AllCountriesDocument = gql`
 }
     `;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
-
-
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
-
-export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
-  return {
-    AllCountries(variables?: AllCountriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<AllCountriesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AllCountriesQuery>({ document: AllCountriesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'AllCountries', 'query', variables);
-    }
-  };
-}
-export type Sdk = ReturnType<typeof getSdk>;
+/**
+ * __useAllCountriesQuery__
+ *
+ * To run a query within a React component, call `useAllCountriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllCountriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllCountriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAllCountriesQuery(baseOptions?: Apollo.QueryHookOptions<AllCountriesQuery, AllCountriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AllCountriesQuery, AllCountriesQueryVariables>(AllCountriesDocument, options);
+      }
+export function useAllCountriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllCountriesQuery, AllCountriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AllCountriesQuery, AllCountriesQueryVariables>(AllCountriesDocument, options);
+        }
+export function useAllCountriesSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AllCountriesQuery, AllCountriesQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<AllCountriesQuery, AllCountriesQueryVariables>(AllCountriesDocument, options);
+        }
+export type AllCountriesQueryHookResult = ReturnType<typeof useAllCountriesQuery>;
+export type AllCountriesLazyQueryHookResult = ReturnType<typeof useAllCountriesLazyQuery>;
+export type AllCountriesSuspenseQueryHookResult = ReturnType<typeof useAllCountriesSuspenseQuery>;
+export type AllCountriesQueryResult = Apollo.QueryResult<AllCountriesQuery, AllCountriesQueryVariables>;

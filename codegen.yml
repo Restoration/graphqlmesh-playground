@@ -1,9 +1,18 @@
 overwrite: true
-schema: "./.mesh/schema.graphql"   # mesh build 後に生成されるスキーマ
-documents: "./queries/**/*.graphql" # 任意: .graphql クエリファイルの場所
+schema: "./.mesh/schema.graphql"
+documents: "./queries/**/*.graphql"
 generates:
   ./src/graphql/generated.ts:
     plugins:
       - typescript
       - typescript-operations
-      - typescript-graphql-request
+      - typescript-react-apollo
+    config:
+      reactApolloVersion: 3
+      withHooks: true
+      withHOC: false
+      withComponent: false
+      # Apollo Client 3 の cache に __typename を活用
+      addTypename: true
+      # 開発中に「クエリがまだ無い」状態でもエラーにしないなら true
+      # ignoreNoDocuments: true
