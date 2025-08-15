@@ -48,9 +48,9 @@ export type Category_Input = {
 
 export type Continent = {
   __typename?: 'Continent';
-  code: Scalars['ID']['output'];
-  countries: Array<Country>;
-  name: Scalars['String']['output'];
+  code?: Maybe<Scalars['ID']['output']>;
+  countries?: Maybe<Array<Country>>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type ContinentFilterInput = {
@@ -59,21 +59,21 @@ export type ContinentFilterInput = {
 
 export type Country = {
   __typename?: 'Country';
-  awsRegion: Scalars['String']['output'];
+  awsRegion?: Maybe<Scalars['String']['output']>;
   capital?: Maybe<Scalars['String']['output']>;
-  code: Scalars['ID']['output'];
-  continent: Continent;
-  currencies: Array<Scalars['String']['output']>;
+  code?: Maybe<Scalars['ID']['output']>;
+  continent?: Maybe<Continent>;
+  currencies?: Maybe<Array<Scalars['String']['output']>>;
   currency?: Maybe<Scalars['String']['output']>;
-  emoji: Scalars['String']['output'];
-  emojiU: Scalars['String']['output'];
-  languages: Array<Language>;
-  name: Scalars['String']['output'];
-  native: Scalars['String']['output'];
-  phone: Scalars['String']['output'];
-  phones: Array<Scalars['String']['output']>;
-  states: Array<State>;
-  subdivisions: Array<Subdivision>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  emojiU?: Maybe<Scalars['String']['output']>;
+  languages?: Maybe<Array<Language>>;
+  name?: Maybe<Scalars['String']['output']>;
+  native?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  phones?: Maybe<Array<Scalars['String']['output']>>;
+  states?: Maybe<Array<State>>;
+  subdivisions?: Maybe<Array<Subdivision>>;
 };
 
 
@@ -102,10 +102,11 @@ export enum HttpMethod {
 
 export type Language = {
   __typename?: 'Language';
-  code: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  native: Scalars['String']['output'];
-  rtl: Scalars['Boolean']['output'];
+  code?: Maybe<Scalars['ID']['output']>;
+  countries?: Maybe<Array<Country>>;
+  name?: Maybe<Scalars['String']['output']>;
+  native?: Maybe<Scalars['String']['output']>;
+  rtl?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type LanguageFilterInput = {
@@ -242,8 +243,8 @@ export type Pet_Input = {
 export type Query = {
   __typename?: 'Query';
   continent?: Maybe<Continent>;
-  continents: Array<Continent>;
-  countries: Array<Country>;
+  continents?: Maybe<Array<Continent>>;
+  countries?: Maybe<Array<Country>>;
   country?: Maybe<Country>;
   /** Multiple status values can be provided with comma separated strings. */
   findPetsByStatus?: Maybe<Array<Maybe<Pet>>>;
@@ -258,7 +259,7 @@ export type Query = {
   /** Get user detail based on username. */
   getUserByName?: Maybe<User>;
   language?: Maybe<Language>;
-  languages: Array<Language>;
+  languages?: Maybe<Array<Language>>;
   /** Log into the system. */
   loginUser?: Maybe<Scalars['String']['output']>;
   /** Log user out of the system. */
@@ -329,8 +330,8 @@ export type QueryLoginUserArgs = {
 export type State = {
   __typename?: 'State';
   code?: Maybe<Scalars['String']['output']>;
-  country: Country;
-  name: Scalars['String']['output'];
+  country?: Maybe<Country>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type StringQueryOperatorInput = {
@@ -343,9 +344,9 @@ export type StringQueryOperatorInput = {
 
 export type Subdivision = {
   __typename?: 'Subdivision';
-  code: Scalars['ID']['output'];
+  code?: Maybe<Scalars['ID']['output']>;
   emoji?: Maybe<Scalars['String']['output']>;
-  name: Scalars['String']['output'];
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type Tag = {
@@ -408,7 +409,7 @@ export enum QueryInput_FindPetsByStatus_Status {
 export type AllCountriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllCountriesQuery = { __typename?: 'Query', countries: Array<{ __typename?: 'Country', code: string, name: string, emoji: string }> };
+export type AllCountriesQuery = { __typename?: 'Query', countries?: Array<{ __typename?: 'Country', code?: string | null, name?: string | null, emoji?: string | null }> | null };
 
 
 export const AllCountriesDocument = gql`

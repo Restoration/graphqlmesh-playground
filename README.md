@@ -3,16 +3,20 @@
 GraphQL Meshの動作検証用リポジトリ
 
 ## 立ち上げ
-```
+```bash
+$ npm install
 $ npm run prebuild
 $ npm run codegen
 $ npm run dev
 ```
 
-## プレイグラウンド
-- npm run mesh
+`http://localhost:3000/demo`にアクセス
 
-meshコマンドで`http://localhost:4000/graphql`にプレイグラウンド立ち上げ
+
+```bash
+npm run mesh
+```
+上記のコマンドで`http://localhost:4000/graphql`にプレイグラウンド立ち上げることが可能です
 
 ## GraphQL参照元
 - https://countries.trevorblades.com/
@@ -31,3 +35,5 @@ query {
   }
 }
 ```
+
+プレイグラウンドで上記のGQLを実行するとデータが取得できるのを確認可能
